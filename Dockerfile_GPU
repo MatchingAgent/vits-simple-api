@@ -27,12 +27,11 @@ RUN wget https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5
 ENV LD_PRELOAD=/usr/local/lib/libjemalloc.so
 
 COPY requirements.txt /app/
-RUN pip install gunicorn --no-cache-dir && \
-    pip install -r requirements.txt --no-cache-dir&& \
+RUN pip install -r requirements.txt --no-cache-dir&& \
     rm -rf /root/.cache/pip/*
 
 COPY . /app
 
 EXPOSE 23456
 
-CMD ["gunicorn", "-c", "gunicorn_config.py", "app:app"]
+CMD ["python", "fastapi_app.py"]

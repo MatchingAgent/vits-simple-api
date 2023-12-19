@@ -6,11 +6,11 @@ import string
 
 import torch
 import yaml
-from flask import current_app
+# from flask import current_app
 
 import config
 import config as default_config
-from tts_app.auth.models import User
+# from tts_app.auth.models import User
 from utils.data_utils import check_is_none
 
 YAML_CONFIG_FILE = os.path.join(default_config.ABS_PATH, 'config.yml')
@@ -57,13 +57,13 @@ def represent_user(dumper, user_obj):
 
 
 # User
-def construct_user(loader, node):
-    user_data = loader.construct_mapping(node, deep=True)
-    return User(user_data['id'], user_data['username'], user_data['password'])
+# def construct_user(loader, node):
+#     user_data = loader.construct_mapping(node, deep=True)
+#     return User(user_data['id'], user_data['username'], user_data['password'])
 
 
-yaml.add_representer(User, represent_user, Dumper=yaml.SafeDumper)
-yaml.add_constructor('!User', construct_user, Loader=yaml.SafeLoader)
+# yaml.add_representer(User, represent_user, Dumper=yaml.SafeDumper)
+# yaml.add_constructor('!User', construct_user, Loader=yaml.SafeLoader)
 
 
 def load_yaml_config(filename):
@@ -102,7 +102,7 @@ def save_yaml_config(data, filename=YAML_CONFIG_FILE):
             yaml.safe_dump(dict_data, f, default_style="'")
         shutil.move(temp_filename, filename)
         logging.info(f"Saving yaml to {YAML_CONFIG_FILE}")
-        current_app.config.update(data)
+        # current_app.config.update(data)
     except Exception as e:
         logging.error(f"Error while saving yaml: {e}")
         if os.path.exists(temp_filename):
@@ -165,19 +165,19 @@ def init_config():
         save_yaml_config(global_config, YAML_CONFIG_FILE)
 
     # 初始化管理员账号密码
-    if getattr(global_config, "users") is None:
-        random_username = generate_random_username()
-        random_password = generate_random_password()
-        logging.info(
-            f"New admin user created:\n"
-            f"{'-' * 40}\n"
-            f"| Username: {random_username:<26} |\n"
-            f"| Password: {random_password:<26} |\n"
-            f"{'-' * 40}\n"
-            f"Please do not share this information.")
-        global_config["users"] = {}
-        global_config["users"]["admin"] = {f"admin": User(1, random_username, random_password)}
-        save_yaml_config(global_config, YAML_CONFIG_FILE)
+    # if getattr(global_config, "users") is None:
+    #     random_username = generate_random_username()
+    #     random_password = generate_random_password()
+    #     logging.info(
+    #         f"New admin user created:\n"
+    #         f"{'-' * 40}\n"
+    #         f"| Username: {random_username:<26} |\n"
+    #         f"| Password: {random_password:<26} |\n"
+    #         f"{'-' * 40}\n"
+    #         f"Please do not share this information.")
+    #     global_config["users"] = {}
+    #     global_config["users"]["admin"] = {f"admin": User(1, random_username, random_password)}
+    #     save_yaml_config(global_config, YAML_CONFIG_FILE)
 
     if config.MODEL_LIST != []:
         model_list = global_config["model_config"]["model_list"]
