@@ -135,6 +135,7 @@ def init_config():
     try:
         global_config.update(load_yaml_config(YAML_CONFIG_FILE))
     except Exception as e:
+        print(e)
         global_config.setdefault("model_config", {})
         global_config.setdefault("default_parameter", {})
 

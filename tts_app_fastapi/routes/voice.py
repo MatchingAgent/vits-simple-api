@@ -6,7 +6,7 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, UploadFile, status
 from logger import logger
 from pydantic import BaseModel, Field
-from tts_app_fastapi.model_manager import model_manager, tts_manager
+from tts_app.model_manager import model_manager, tts_manager
 
 from contants import ModelType
 
