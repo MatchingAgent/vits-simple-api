@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status
 from pydantic import BaseModel, Field
 
-router = APIRouter(prefix="/api")
+router = APIRouter()
 
 
 class HealthcheckResponse(BaseModel):

@@ -1,7 +1,10 @@
 import base64
+from io import BytesIO
 import time
 import uuid
 from typing import Optional
+
+from numpy import ndarray
 
 from fastapi import APIRouter, HTTPException, UploadFile, status
 from logger import logger
@@ -10,7 +13,7 @@ from tts_app.model_manager import model_manager, tts_manager
 
 from contants import ModelType
 
-router = APIRouter(prefix="/api")
+router = APIRouter()
 
 
 def check_is_none(item) -> bool:
@@ -52,7 +55,7 @@ class BertVits2Request(BaseModel):
     sdp_ratio: float = 0.2
     segment_size: int = 50
     use_streaming: bool = False
-    emotion: Optional[int] = None
+    emotion: Optional[int] = 0
     reference_audio: Optional[UploadFile] = None
 
 
@@ -170,7 +173,7 @@ def bert_vits2(req: BertVits2Request) -> BertVits2Response:
     audio = tts_manager.bert_vits2_infer(state)
     t2 = time.time()
     logger.info(f"[{ModelType.BERT_VITS2.value}] finish in {(t2 - t1):.2f}s")
-    base64EncodedAudio = base64.b64encode(audio).decode("utf-8")
+    base64EncodedAudio = __encode_wav(audio)
     return BertVits2Response(base64=base64EncodedAudio)
 
     # if current_app.config.get("SAVE_AUDIO", False):
@@ -181,3 +184,17 @@ def bert_vits2(req: BertVits2Request) -> BertVits2Response:
     # return send_file(
     #     path_or_file=audio, mimetype=file_type, download_name=fname
     # )
+
+def __encode_wav(audio: BytesIO|ndarray):
+    # BytesIO オブジェクトの場合
+    if isinstance(audio, BytesIO):
+        bytes_data = audio.getvalue()
+    # ndarray の場合
+    elif isinstance(audio, ndarray):
+        bytes_data = audio.tobytes()
+    else:
+        raise TypeError("Unsupported audio type. Must be BytesIO or ndarray.")
+
+    # Base64エンコード
+    encoded_data = base64.b64encode(bytes_data)
+    return encoded_data.decode('utf-8')
