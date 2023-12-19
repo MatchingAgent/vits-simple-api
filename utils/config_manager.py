@@ -12,7 +12,6 @@ import config
 import config as default_config
 # from tts_app.auth.models import User
 from utils.data_utils import check_is_none
-from logger import logger
 
 YAML_CONFIG_FILE = os.path.join(default_config.ABS_PATH, 'config.yml')
 
@@ -136,8 +135,6 @@ def init_config():
     try:
         global_config.update(load_yaml_config(YAML_CONFIG_FILE))
     except Exception as e:
-        logger.warn(e)
-        print(e)
         global_config.setdefault("model_config", {})
         global_config.setdefault("default_parameter", {})
 
