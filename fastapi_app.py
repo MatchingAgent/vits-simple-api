@@ -6,8 +6,6 @@ from tts_app_fastapi.routes.healthcheck import router as healthcheckRouter
 from tts_app_fastapi.routes.voice import router as voiceRouter
 from utils.config_manager import global_config
 
-app = FastAPI()
-
 
 class VitsSimpleApi:
     def __init__(self):
@@ -18,7 +16,6 @@ class VitsSimpleApi:
 
         self.__app.include_router(healthcheckRouter)
         self.__app.include_router(voiceRouter)
-
 
     def run(self):
         config = uvicorn.Config(
