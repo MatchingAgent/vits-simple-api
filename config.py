@@ -11,7 +11,7 @@ MAX_CONTENT_LENGTH = 5242880
 DEBUG = False
 
 # Server port
-PORT = 23456
+PORT = 80
 
 # Absolute path of vits-simple-api
 ABS_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -25,7 +25,7 @@ CACHE_PATH = ABS_PATH + "/cache"
 # Logs path
 LOGS_PATH = ABS_PATH + "/logs"
 
-# Set the number of backup log files to keep. 
+# Set the number of backup log files to keep.
 LOGS_BACKUPCOUNT = 30
 
 # If CLEAN_INTERVAL_SECONDS <= 0, the cleaning task will not be executed.
@@ -65,6 +65,7 @@ ESPEAK_LIBRARY = ""
 
 # Fill in the model path here
 MODEL_LIST = [
+    [ABS_PATH + "/Model/ai001/G_16000.pth", ABS_PATH + "/Model/ai001/config.json"],
     # VITS
     # [ABS_PATH + "/Model/Nene_Nanami_Rong_Tang/1374_epochs.pth", ABS_PATH + "/Model/Nene_Nanami_Rong_Tang/config.json"],
     # [ABS_PATH + "/Model/Zero_no_tsukaima/1158_epochs.pth", ABS_PATH + "/Model/Zero_no_tsukaima/config.json"],

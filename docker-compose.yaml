@@ -4,7 +4,7 @@ services:
     image: artrajz/vits-simple-api:latest
     restart: always
     ports:
-      - 23456:23456
+      - 80:80
     environment:
       LANG: 'C.UTF-8'
       TZ: Asia/Shanghai #timezone

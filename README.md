@@ -263,7 +263,7 @@ To ensure compatibility with the Bert-VITS2 model, modify the config.json file b
 ```
 
 # Admin Backend
-The default address is http://127.0.0.1:23456/admin.
+The default address is http://127.0.0.1/admin.
 
 The initial username and password can be found at the bottom of the config.yml file after the first startup.
 
@@ -273,27 +273,27 @@ The initial username and password can be found at the bottom of the config.yml f
 
 #### speakers list 
 
-- GET http://127.0.0.1:23456/voice/speakers
+- GET http://127.0.0.1/voice/speakers
 
   Returns the mapping table of role IDs to speaker names.
 
 #### voice vits
 
-- GET http://127.0.0.1:23456/voice/vits?text=text
+- GET http://127.0.0.1/voice/vits?text=text
 
   Default values are used when other parameters are not specified.
 
-- GET http://127.0.0.1:23456/voice/vits?text=[ZH]text[ZH][JA]text[JA]&lang=mix
+- GET http://127.0.0.1/voice/vits?text=[ZH]text[ZH][JA]text[JA]&lang=mix
 
   When lang=mix, the text needs to be annotated.
 
-- GET http://127.0.0.1:23456/voice/vits?text=text&id=142&format=wav&lang=zh&length=1.4
+- GET http://127.0.0.1/voice/vits?text=text&id=142&format=wav&lang=zh&length=1.4
 
    The text is "text", the role ID is 142, the audio format is wav, the text language is zh, the speech length is 1.4, and the other parameters are default.
 
 #### check
 
-- GET http://127.0.0.1:23456/voice/check?id=0&model=vits
+- GET http://127.0.0.1/voice/check?id=0&model=vits
 
 ## POST
 

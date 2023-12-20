@@ -1,7 +1,7 @@
 import gc
 import multiprocessing
 
-bind = "0.0.0.0:23456"
+bind = "0.0.0.0:80"
 # workers = multiprocessing.cpu_count()
 workers = 1
 preload_app = True

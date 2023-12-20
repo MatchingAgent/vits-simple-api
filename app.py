@@ -70,4 +70,4 @@ def clean_task():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=app.config.get("PORT", 23456), debug=app.config.get("DEBUG", False))
+    app.run(host='0.0.0.0', port=app.config.get("PORT", 80), debug=app.config.get("DEBUG", False))

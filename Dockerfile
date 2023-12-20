@@ -11,7 +11,7 @@ RUN apt-get update && \
     update-ca-certificates && \
     apt-get clean && \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
-    rm -rf /var/lib/apt/lists/* 
+    rm -rf /var/lib/apt/lists/*
 
 # Install jemalloc
 RUN wget https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2 && \
@@ -32,6 +32,6 @@ RUN pip install -r requirements.txt --no-cache-dir&& \
 
 COPY . /app
 
-EXPOSE 23456
+EXPOSE 80
 
 CMD ["python", "fastapi_app.py"]

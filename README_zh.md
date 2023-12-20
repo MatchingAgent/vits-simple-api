@@ -270,7 +270,7 @@ pip install pyopenjtalk -i https://pypi.artrajz.cn/simple
 
 # 管理员后台
 
-默认为http://127.0.0.1:23456/admin
+默认为http://127.0.0.1/admin
 
 初始账号密码在初次启动后，在config.yml最下方可找到。
 
@@ -280,27 +280,27 @@ pip install pyopenjtalk -i https://pypi.artrajz.cn/simple
 
 #### speakers list 
 
-- GET http://127.0.0.1:23456/voice/speakers
+- GET http://127.0.0.1/voice/speakers
 
   返回id对应角色的映射表
 
 #### voice vits
 
-- GET http://127.0.0.1:23456/voice/vits?text=text
+- GET http://127.0.0.1/voice/vits?text=text
 
   其他参数不指定时均为默认值
 
-- GET http://127.0.0.1:23456/voice/vits?text=[ZH]text[ZH][JA]text[JA]&lang=mix
+- GET http://127.0.0.1/voice/vits?text=[ZH]text[ZH][JA]text[JA]&lang=mix
 
   lang=mix时文本要标注
 
-- GET http://127.0.0.1:23456/voice/vits?text=text&id=142&format=wav&lang=zh&length=1.4
+- GET http://127.0.0.1/voice/vits?text=text&id=142&format=wav&lang=zh&length=1.4
 
   文本为text，角色id为142，音频格式为wav，文本语言为zh，语音长度为1.4，其余参数默认
 
 #### check
 
-- GET http://127.0.0.1:23456/voice/check?id=0&model=vits
+- GET http://127.0.0.1/voice/check?id=0&model=vits
 
 ## POST
 

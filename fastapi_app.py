@@ -21,9 +21,9 @@ class VitsSimpleApi:
         config = uvicorn.Config(
             self.__app,
             host="0.0.0.0",
-            port=23456,
+            port=80,
             log_config=None,
-            access_log=False,
+            access_log=True,
             timeout_keep_alive=65,
         )
         server = uvicorn.Server(config)

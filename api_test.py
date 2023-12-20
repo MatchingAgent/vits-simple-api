@@ -8,7 +8,7 @@ import string
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 absolute_path = os.path.dirname(__file__)
-base_url = "http://127.0.0.1:23456"
+base_url = "http://127.0.0.1:80"
 
 
 # 映射表
